@@ -48994,7 +48994,7 @@ var render = function () {
                   attrs: { for: _vm.item.id },
                 },
                 [
-                  _c("textarea", {
+                  _c("input", {
                     directives: [
                       {
                         name: "model",
