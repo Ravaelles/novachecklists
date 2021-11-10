@@ -415,6 +415,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+console.log('aaa yup');
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['field'],
   data: function data() {

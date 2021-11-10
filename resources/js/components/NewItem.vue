@@ -18,6 +18,7 @@
     </div>
 </template>
 <script>
+  console.log('aaa yup');
     export default {
         props: ['field'],
         data() {
