@@ -1,5 +1,5 @@
 {
-    "name": "e2consult/novachecklists",
+    "name": "ravaelles/novachecklists",
     "description": "A Laravel Nova field to display a list of items to complete.",
     "keywords": [
         "laravel",
