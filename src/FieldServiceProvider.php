@@ -1,6 +1,6 @@
 <?php
 
-namespace E2Consult\NovaChecklist;
+namespace Ravaelles\NovaChecklist;
 
 use Laravel\Nova\Nova;
 use Laravel\Nova\Events\ServingNova;

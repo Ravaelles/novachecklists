@@ -15,7 +15,7 @@
     "authors": [
         {
             "name": "Einar-Johan Hansen",
-            "email": "einar@e2consult.no"
+            "email": "einar@Ravaelles.no"
         }
     ],
     "require": {
@@ -23,13 +23,13 @@
     },
     "autoload": {
         "psr-4": {
-            "E2Consult\\NovaChecklist\\": "src/"
+            "Ravaelles\\NovaChecklist\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "E2Consult\\NovaChecklist\\FieldServiceProvider"
+                "Ravaelles\\NovaChecklist\\FieldServiceProvider"
             ]
         }
     },

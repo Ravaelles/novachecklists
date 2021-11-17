@@ -1,10 +1,10 @@
 # Laravel Nova Checklist Field
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/e2consult/novachecklists.svg)](https://packagist.org/packages/e2consult/novachecklists)
-[![License](https://img.shields.io/packagist/l/e2consult/novachecklists.svg)](https://packagist.org/packages/e2consult/novachecklists)
-[![Total Downloads](https://img.shields.io/packagist/dt/e2consult/novachecklists.svg)](https://packagist.org/packages/e2consult/novachecklists)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/Ravaelles/novachecklists.svg)](https://packagist.org/packages/Ravaelles/novachecklists)
+[![License](https://img.shields.io/packagist/l/Ravaelles/novachecklists.svg)](https://packagist.org/packages/Ravaelles/novachecklists)
+[![Total Downloads](https://img.shields.io/packagist/dt/Ravaelles/novachecklists.svg)](https://packagist.org/packages/Ravaelles/novachecklists)
 
-E2Consult is a webdevelopment team based in Oslo, Norway. You'll find more information about us [on our website](https://e2consult.no).
+Ravaelles is a webdevelopment team based in Oslo, Norway. You'll find more information about us [on our website](https://Ravaelles.no).
 
 This package is made to allow you to easily create checklists in Laravel Nova. All you need is a text/json column on you model to store the items.
 
@@ -14,14 +14,14 @@ You can install the package via composer:
 
 
 ```bash
-composer require e2consult/novachecklists
+composer require Ravaelles/novachecklists
 ```
 
 ## Usage
 
 
 ```php
-use E2Consult\NovaChecklist\Checklist;
+use Ravaelles\NovaChecklist\Checklist;
 
 Checklist::make('Tasks')
     ->placeholder('Add another task')   // Defaults to "Add item"
@@ -64,7 +64,7 @@ The `->showCompletionOnIndex()` method will let you show how many percent of the
 ![Checklist-detail-page](https://raw.githubusercontent.com/e2-consult/novachecklists/master/index.png)
 
 ```php
-use E2Consult\NovaChecklist\Checklist;
+use Ravaelles\NovaChecklist\Checklist;
 
 Checklist::make('Tasks')
     ->placeholder('Add task ')
