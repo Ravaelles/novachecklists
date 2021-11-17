@@ -34213,8 +34213,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
 
 
 
@@ -34753,17 +34751,21 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(171)
+}
 var normalizeComponent = __webpack_require__(1)
 /* script */
 var __vue_script__ = __webpack_require__(163)
 /* template */
-var __vue_template__ = __webpack_require__(164)
+var __vue_template__ = __webpack_require__(173)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
-var __vue_styles__ = null
+var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = null
+var __vue_scopeId__ = "data-v-689550b8"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -34819,7 +34821,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['field'],
@@ -34829,6 +34830,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     };
   },
 
+  computed: {
+    placholderText: function placholderText() {
+      return (this.field.placeholder || 'Add item ') + (this.field.placeholder_count ? this.$parent.items.length + 1 : '');
+    },
+    textareaClasses: function textareaClasses() {
+      var classes = this.errorClasses || [];
+      classes.push('w-full');
+      classes.push('form-control');
+      classes.push('form-input');
+      classes.push('form-input-bordered');
+      return classes;
+    }
+  },
   methods: {
     freshItem: function freshItem() {
       return {
@@ -34850,6 +34864,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         this.item = this.freshItem();
       }
     },
+    numOfRows: function numOfRows() {
+      var text = this.item.body;
+      var numberOfLineBreaks = (text.match(/\n/g) || []).length;
+      return numberOfLineBreaks + 1;
+    },
     uuidv4: function uuidv4() {
       return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
         var r = Math.random() * 16 | 0,
@@ -34857,122 +34876,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         return v.toString(16);
       });
     }
-  },
-  computed: {
-    placholderText: function placholderText() {
-      return (this.field.placeholder || 'Add item ') + (this.field.placeholder_count ? this.$parent.items.length + 1 : '');
-    }
   }
 });
 
 /***/ }),
-/* 164 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("div", { staticClass: "flex" }, [
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.item.body,
-            expression: "item.body"
-          }
-        ],
-        staticClass: "w-full form-control form-input form-input-bordered",
-        class: _vm.errorClasses,
-        attrs: {
-          id: _vm.item.id,
-          type: "text",
-          name: "new-item",
-          placeholder: _vm.placholderText
-        },
-        domProps: { value: _vm.item.body },
-        on: {
-          keydown: function($event) {
-            if (
-              !$event.type.indexOf("key") &&
-              _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
-            ) {
-              return null
-            }
-            $event.preventDefault()
-            return _vm.addItem.apply(null, arguments)
-          },
-          input: function($event) {
-            if ($event.target.composing) {
-              return
-            }
-            _vm.$set(_vm.item, "body", $event.target.value)
-          }
-        }
-      }),
-      _vm._v(" "),
-      _c(
-        "button",
-        {
-          directives: [
-            {
-              name: "show",
-              rawName: "v-show",
-              value: _vm.item.body.length > 0,
-              expression: "item.body.length > 0"
-            }
-          ],
-          staticClass: "ml-3 ",
-          attrs: {
-            disabled: _vm.item.body.length == 0,
-            type: "button",
-            name: "new-item"
-          },
-          on: {
-            click: function($event) {
-              $event.preventDefault()
-              return _vm.addItem.apply(null, arguments)
-            }
-          }
-        },
-        [
-          _c(
-            "svg",
-            {
-              staticClass: "sidebar-icon",
-              attrs: {
-                xmlns: "http://www.w3.org/2000/svg",
-                viewBox: "0 0 22 22"
-              }
-            },
-            [
-              _c("path", {
-                attrs: {
-                  fill: "var(--sidebar-icon)",
-                  d:
-                    "M12 22a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm1-9h2a1 1 0 0 1 0 2h-2v2a1 1 0 0 1-2 0v-2H9a1 1 0 0 1 0-2h2V9a1 1 0 0 1 2 0v2z"
-                }
-              })
-            ]
-          )
-        ]
-      )
-    ])
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-689550b8", module.exports)
-  }
-}
-
-/***/ }),
+/* 164 */,
 /* 165 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -61568,6 +61476,160 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-c023248a", module.exports)
+  }
+}
+
+/***/ }),
+/* 171 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(172);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(156)("ba992f92", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-689550b8\",\"scoped\":true,\"hasInlineConfig\":true}!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./NewItem.vue", function() {
+     var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-689550b8\",\"scoped\":true,\"hasInlineConfig\":true}!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./NewItem.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 172 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(155)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.checklist-item-new textarea[data-v-689550b8] {\r\n  min-height: 1.5rem;\r\n  height: auto;\r\n  overflow: hidden;\r\n  overflow-wrap: break-word;\r\n  word-break: break-word;\n}\r\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 173 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "flex checklist-item-new" }, [
+      _c("textarea", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.item.body,
+            expression: "item.body"
+          }
+        ],
+        class: _vm.textareaClasses,
+        attrs: {
+          id: _vm.item.id,
+          rows: _vm.numOfRows(),
+          name: "new-item",
+          placeholder: _vm.placholderText
+        },
+        domProps: { value: _vm.item.body },
+        on: {
+          keydown: function($event) {
+            if (
+              !$event.type.indexOf("key") &&
+              _vm._k($event.keyCode, "enter", 13, $event.key, "Enter")
+            ) {
+              return null
+            }
+            if (
+              $event.ctrlKey ||
+              $event.shiftKey ||
+              $event.altKey ||
+              $event.metaKey
+            ) {
+              return null
+            }
+            $event.preventDefault()
+            return _vm.addItem.apply(null, arguments)
+          },
+          input: function($event) {
+            if ($event.target.composing) {
+              return
+            }
+            _vm.$set(_vm.item, "body", $event.target.value)
+          }
+        }
+      }),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.item.body.length > 0,
+              expression: "item.body.length > 0"
+            }
+          ],
+          staticClass: "ml-3 ",
+          attrs: {
+            disabled: _vm.item.body.length == 0,
+            type: "button",
+            name: "new-item"
+          },
+          on: {
+            click: function($event) {
+              $event.preventDefault()
+              return _vm.addItem.apply(null, arguments)
+            }
+          }
+        },
+        [
+          _c(
+            "svg",
+            {
+              staticClass: "sidebar-icon",
+              attrs: {
+                xmlns: "http://www.w3.org/2000/svg",
+                viewBox: "0 0 22 22"
+              }
+            },
+            [
+              _c("path", {
+                attrs: {
+                  fill: "var(--sidebar-icon)",
+                  d:
+                    "M12 22a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm1-9h2a1 1 0 0 1 0 2h-2v2a1 1 0 0 1-2 0v-2H9a1 1 0 0 1 0-2h2V9a1 1 0 0 1 2 0v2z"
+                }
+              })
+            ]
+          )
+        ]
+      )
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-689550b8", module.exports)
   }
 }
 

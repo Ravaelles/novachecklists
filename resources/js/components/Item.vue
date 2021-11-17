@@ -9,9 +9,7 @@
             class="pr-2"/>
         <label
             :for="item.id"
-
             class="w-full flex justify-between">
-          <!--                    <input class="w-full" v-on:keydown.enter.prevent v-model="item.body"/>-->
           <textarea
               class="w-full"
               :rows="numOfRows()"
