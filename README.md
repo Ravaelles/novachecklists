@@ -4,9 +4,7 @@
 [![License](https://img.shields.io/packagist/l/Ravaelles/novachecklists.svg)](https://packagist.org/packages/Ravaelles/novachecklists)
 [![Total Downloads](https://img.shields.io/packagist/dt/Ravaelles/novachecklists.svg)](https://packagist.org/packages/Ravaelles/novachecklists)
 
-Ravaelles is a webdevelopment team based in Oslo, Norway. You'll find more information about us [on our website](https://Ravaelles.no).
-
-This package is made to allow you to easily create checklists in Laravel Nova. All you need is a text/json column on you model to store the items.
+Fork of https://github.com/encima-io/novachecklists that uses multi-line textareas instead of single-line inputs for checklist items.
 
 ## Installation
 
