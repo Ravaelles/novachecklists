@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="flex checklist-item-new">
+        <div class="flex checklist-item">
             <textarea
                 :id="item.id"
                 :class="textareaClasses"
@@ -72,13 +72,3 @@
     }
   }
 </script>
-
-<style scoped>
-.checklist-item-new textarea {
-  min-height: 1.5rem;
-  height: auto;
-  overflow: hidden;
-  overflow-wrap: break-word;
-  word-break: break-word;
-}
-</style>

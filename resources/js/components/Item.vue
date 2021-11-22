@@ -11,9 +11,12 @@
             :for="item.id"
             class="w-full flex justify-between">
           <textarea
-              class="w-full"
-              :rows="numOfRows()"
+              class="w-full hello-there"
+              ref="textarea"
               v-model="item.body"
+              :rows="numOfRows()"
+              :style="{ 'height': minHeight + 'px' }"
+              @keyup="recalculateMinHeight()"
           ></textarea>
         </label>
       </div>
@@ -53,6 +56,11 @@ import moment from 'moment';
 
 export default {
   props: ['item', 'field'],
+  data() {
+    return {
+      minHeight: 20
+    }
+  },
   computed: {
     isChecked() {
       return this.item.completed_at != null
@@ -77,6 +85,9 @@ export default {
       return null
     }
   },
+  mounted() {
+    this.recalculateMinHeight();
+  },
   methods: {
     toggleCheckbox() {
       if (this.item.completed_at) {
@@ -94,6 +105,15 @@ export default {
       let text = this.item.body;
       let numberOfLineBreaks = (text.match(/\n/g) || []).length;
       return numberOfLineBreaks + 1;
+    },
+    recalculateMinHeight() {
+      let textarea = this.$refs.textarea;
+      if (textarea) {
+        const scrollHeight = textarea.clientHeight < textarea.scrollHeight ? (textarea.scrollHeight + 1) : textarea.clientHeight;
+        const linesHeight = this.numOfRows() * 20;
+        return this.minHeight = Math.max(scrollHeight, linesHeight);
+      }
+      return this.minHeight = 20;
     }
   },
 }
@@ -105,9 +125,8 @@ export default {
 }
 
 .checklist-item label textarea {
-  min-height: 1.5rem;
   height: auto;
-  overflow: hidden;
+  overflow: inherit;
   overflow-wrap: break-word;
   word-break: break-word;
 }
