@@ -34844,7 +34844,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['field'],
@@ -34913,7 +34912,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("div", { staticClass: "flex checklist-item" }, [
-      _c("input", {
+      _c("textarea", {
         directives: [
           {
             name: "model",
@@ -34922,7 +34921,13 @@ var render = function() {
             expression: "item.body"
           }
         ],
-        staticClass: "w-full",
+        class: _vm.textareaClasses,
+        attrs: {
+          id: _vm.item.id,
+          rows: _vm.numOfRows(),
+          name: "new-item",
+          placeholder: _vm.placholderText
+        },
         domProps: { value: _vm.item.body },
         on: {
           keydown: function($event) {
@@ -34932,7 +34937,16 @@ var render = function() {
             ) {
               return null
             }
+            if (
+              $event.ctrlKey ||
+              $event.shiftKey ||
+              $event.altKey ||
+              $event.metaKey
+            ) {
+              return null
+            }
             $event.preventDefault()
+            return _vm.addItem.apply(null, arguments)
           },
           input: function($event) {
             if ($event.target.composing) {
@@ -35190,6 +35204,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
      * Set the initial, internal value for the field.
      */
     setInitialValue: function setInitialValue() {
+      if (!this.field || !this.field.value) {
+        return [];
+      }
+
       this.value = JSON.parse(this.field.value) || [];
     },
 

@@ -95,7 +95,8 @@ export default {
         this.item.completed_at = null;
       } else {
         this.item.completed_by = this.field.user;
-        this.item.completed_at = Date.now();
+        this.item.completed_at = null;
+        // this.item.completed_at = Date.now();
       }
     },
     destroy() {

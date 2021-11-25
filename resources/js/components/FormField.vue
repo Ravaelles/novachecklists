@@ -30,6 +30,10 @@ export default {
          * Set the initial, internal value for the field.
          */
         setInitialValue() {
+          if (!this.field || !this.field.value) {
+            return [];
+          }
+
           this.value = JSON.parse(this.field.value) || []
         },
 
