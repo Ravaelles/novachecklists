@@ -33811,7 +33811,7 @@ exports = module.exports = __webpack_require__(155)(false);
 
 
 // module
-exports.push([module.i, "\n.checklist-item[data-v-2c619f04] {\n  align-items: center;\n}\n.checklist-item label textarea[data-v-2c619f04] {\n  height: auto;\n  overflow: inherit;\n  overflow-wrap: break-word;\n  padding-top: 5px;\n  word-break: break-word;\n}\n", ""]);
+exports.push([module.i, "\n.checklist-item[data-v-2c619f04] {\r\n  align-items: center;\n}\n.checklist-item label textarea[data-v-2c619f04] {\r\n  height: auto;\r\n  overflow: inherit;\r\n  overflow-wrap: break-word;\r\n  padding-top: 5px;\r\n  word-break: break-word;\n}\r\n", ""]);
 
 // exports
 
