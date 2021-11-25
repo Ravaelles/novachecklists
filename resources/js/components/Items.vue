@@ -21,6 +21,10 @@
         },
         methods: {
             add(item) {
+                if (!this.items) {
+                    this.items = [];
+                }
+
                 this.items.push(item);
 
                 this.$emit('added');
