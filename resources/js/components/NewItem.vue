@@ -9,6 +9,7 @@
                 :placeholder="placholderText"
                 v-model="item.body"
                 v-on:keydown.enter.exact.prevent="addItem"
+                @keyup="recalculateMinHeight()"
             ></textarea>
             <button class="ml-3 " v-show="item.body.length > 0" :disabled="item.body.length == 0" @click.prevent="addItem" type="button" name="new-item">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22" class="sidebar-icon"><path fill="var(--sidebar-icon)" d="M12 22a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm1-9h2a1 1 0 0 1 0 2h-2v2a1 1 0 0 1-2 0v-2H9a1 1 0 0 1 0-2h2V9a1 1 0 0 1 2 0v2z"></path></svg>
@@ -68,6 +69,15 @@
           var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
           return v.toString(16);
         });
+      },
+      recalculateMinHeight() {
+        let textarea = this.$refs.textarea;
+        if (textarea) {
+          const scrollHeight = textarea.clientHeight < textarea.scrollHeight ? (textarea.scrollHeight + 1) : textarea.clientHeight;
+          const linesHeight = this.numOfRows() * 20;
+          return this.minHeight = Math.max(scrollHeight, linesHeight);
+        }
+        return this.minHeight = 20;
       }
     }
   }

@@ -129,6 +129,7 @@ export default {
   height: auto;
   overflow: inherit;
   overflow-wrap: break-word;
+  padding-top: 5px;
   word-break: break-word;
 }
 </style>
