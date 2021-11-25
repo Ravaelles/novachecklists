@@ -125,7 +125,7 @@ export default {
   align-items: center;
 }
 
-.checklist-item label textarea {
+.checklist-item textarea {
   height: auto;
   overflow: inherit;
   overflow-wrap: break-word;
