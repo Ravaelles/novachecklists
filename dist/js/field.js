@@ -33709,6 +33709,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         add: function add(item) {
+            if (!this.items) {
+                this.items = [];
+            }
+
             this.items.push(item);
 
             this.$emit('added');
@@ -33807,7 +33811,7 @@ exports = module.exports = __webpack_require__(155)(false);
 
 
 // module
-exports.push([module.i, "\n.checklist-item[data-v-2c619f04] {\n  align-items: center;\n}\n.checklist-item label textarea[data-v-2c619f04] {\n  height: auto;\n  overflow: inherit;\n  overflow-wrap: break-word;\n  word-break: break-word;\n}\n", ""]);
+exports.push([module.i, "\n.checklist-item[data-v-2c619f04] {\n  align-items: center;\n}\n.checklist-item label textarea[data-v-2c619f04] {\n  height: auto;\n  overflow: inherit;\n  overflow-wrap: break-word;\n  padding-top: 5px;\n  word-break: break-word;\n}\n", ""]);
 
 // exports
 
@@ -34261,7 +34265,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         this.item.completed_at = null;
       } else {
         this.item.completed_by = this.field.user;
-        this.item.completed_at = Date.now();
+        this.item.completed_at = null;
+        // this.item.completed_at = Date.now();
       }
     },
     destroy: function destroy() {
@@ -34844,6 +34849,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['field'],
@@ -34898,6 +34904,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             v = c == 'x' ? r : r & 0x3 | 0x8;
         return v.toString(16);
       });
+    },
+    recalculateMinHeight: function recalculateMinHeight() {
+      var textarea = this.$refs.textarea;
+      if (textarea) {
+        var scrollHeight = textarea.clientHeight < textarea.scrollHeight ? textarea.scrollHeight + 1 : textarea.clientHeight;
+        var linesHeight = this.numOfRows() * 20;
+        return this.minHeight = Math.max(scrollHeight, linesHeight);
+      }
+      return this.minHeight = 20;
     }
   }
 });
@@ -34947,6 +34962,9 @@ var render = function() {
             }
             $event.preventDefault()
             return _vm.addItem.apply(null, arguments)
+          },
+          keyup: function($event) {
+            return _vm.recalculateMinHeight()
           },
           input: function($event) {
             if ($event.target.composing) {
