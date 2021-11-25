@@ -5,6 +5,7 @@
                 :id="item.id"
                 :class="textareaClasses"
                 :rows="numOfRows()"
+                ref="textarea"
                 name="new-item"
                 :placeholder="placholderText"
                 v-model="item.body"

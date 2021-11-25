@@ -34850,6 +34850,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['field'],
@@ -34936,6 +34937,7 @@ var render = function() {
             expression: "item.body"
           }
         ],
+        ref: "textarea",
         class: _vm.textareaClasses,
         attrs: {
           id: _vm.item.id,
